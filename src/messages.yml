@@ -1,0 +1,5 @@
+no-key: "&8[&aEndCrate&8] &7You do not have the required key."
+already-being-used: "&8[&aEndCrate&8] &7This crate is already being used."
+hologram-over-crate: "&2&l&nLimited Crate"
+preview-title: "&a&lEndcrate Prices"
+chance-lore: "&7Chance&8: {CHANCE}%"

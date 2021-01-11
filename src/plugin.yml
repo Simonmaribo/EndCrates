@@ -1,0 +1,17 @@
+
+
+#  AUTHOR: FlupMC
+#  CONTRIBUTORS: Steilgaard
+#  WEBSITE: simonmaribo.dk
+#  SUPPORT: discord.simonmaribo.dk
+
+#    Copyright 2021 © Simon Maribo
+
+name: EndCrate
+main: dk.simonmaribo.endcrate.Main
+version: 1.0.0
+authors: [Steilgaard, FlupMC]
+website: www.simonmaribo.dk
+depend: [ParticleLIB]
+commands:
+  endcrate:

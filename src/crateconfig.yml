@@ -1,0 +1,48 @@
+EndCrate:
+  Broadcast: false
+
+  Preview: true
+  Hide-Percentages: false
+  Key:
+    Item: EYE_OF_ENDER
+    Name: "&2&lEndCrate Key"
+    Enchanted: true
+    Lore:
+      - "&aYou can use this key"
+      - "&ain spawn!"
+  Winnings:
+    1:
+      Name: "&a&l1x kit Ender"
+      Item-Type: DIAMOND_SWORD
+      Percentage: 25
+      Messages:
+        - 'You have won 1x kit Ender'
+      Commands:
+        - 'kit ender %player%'
+    2:
+      Name: "&a&l$1000"
+      Item-Type: PAPER
+      Enchanted: true
+      Percentage: 25
+      Messages:
+        - 'You have won $1000'
+      Commands:
+        - 'eco give %player% 1000'
+    3:
+      Name: "&a&l$2500"
+      Item-Type: PAPER
+      Enchanted: true
+      Percentage: 25
+      Messages:
+        - 'You have won $2500'
+      Commands:
+        - 'eco give %player% 2500'
+    4:
+      Name: "&a&l$5000"
+      Item-Type: PAPER
+      Enchanted: true
+      Percentage: 25
+      Messages:
+        - 'You have won $5000'
+      Commands:
+        - 'eco give %player% 5000'
