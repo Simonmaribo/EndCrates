@@ -46,6 +46,9 @@ public class CrateOpen {
             armorStand.setSmall(true);
             armorStand.setVisible(false);
             armorStand.setCustomName("EndCrateArmorStand");
+            Main.getArmorStandList().add(armorStand);
+
+
             ItemStack head = SkullCreator.itemFromUrl("http://textures.minecraft.net/texture/1fe8e7f2db8eaa88a041c89d4c353d066cc4edef77edcf5e08bb5d3baad");
             armorStand.setHelmet(head);
             final Collection<? extends Player> players = Bukkit.getOnlinePlayers();
@@ -100,12 +103,13 @@ public class CrateOpen {
                     i++;
                     if (i == 1) {
                         Location loc = armorStand.getEyeLocation();
-                        loc.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), 1f, false, false);
+                        loc.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), 0f, false, false);
                         ParticleEffect.CLOUD.send(players, armorStand.getLocation().add(0, 1, 0), 0, 0, 0, 0.1, 10);
                         player.playSound(armorStand.getLocation(), Sound.LEVEL_UP, (float) 1.99, 0);
                     }
                     if (i == 50) {
                         armorStand.remove();
+                        Main.getArmorStandList().remove(armorStand);
 
                         cancel();
                     }
@@ -123,12 +127,14 @@ public class CrateOpen {
                         hologram.setVisible(false);
                         hologram.setCustomNameVisible(true);
                         hologram.setCustomName(Main.getColored(holoOverCrate));
+                        Main.getArmorStandList().add(hologram);
 
                         ArmorStand hologram2 = (ArmorStand) armorStand.getWorld().spawnEntity(armorStand.getLocation().add(0, -0.8, 0), EntityType.ARMOR_STAND);
                         hologram2.setGravity(false);
                         hologram2.setVisible(false);
                         hologram2.setCustomNameVisible(true);
                         hologram2.setCustomName(Main.getColored(prizeWon.getName()));
+                        Main.getArmorStandList().add(hologram2);
 
                     }
                     if(i == 5){
@@ -139,6 +145,7 @@ public class CrateOpen {
                         for (Entity ent : armorStand.getWorld().getChunkAt(armorStand.getLocation()).getEntities()){
                             if(ent.getCustomName() != null) {
                                 if (ent.getCustomName().equals(Main.getColored(holoOverCrate)) || ent.getCustomName().equals(Main.getColored(prizeWon.getName()))) {
+                                    Main.getArmorStandList().remove((ArmorStand) ent);
                                     ent.remove();
                                 }
                             }

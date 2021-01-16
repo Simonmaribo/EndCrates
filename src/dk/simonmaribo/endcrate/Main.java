@@ -13,10 +13,14 @@ package dk.simonmaribo.endcrate;
 import dk.simonmaribo.endcrate.commands.EndcrateCommand;
 
 import dk.simonmaribo.endcrate.listener.EndCrateClickEvent;
+import dk.simonmaribo.endcrate.listener.EndCratePreviewClickEvent;
+import dk.simonmaribo.endcrate.listener.EntityClickEvent;
 import dk.simonmaribo.endcrate.utils.ConfigWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -43,6 +47,12 @@ public class Main extends JavaPlugin {
         return instance;
     }
 
+    private static List<ArmorStand> armorStandList = new ArrayList<>();
+
+    public static List<ArmorStand> getArmorStandList() {
+        return armorStandList;
+    }
+
     @Override
     public void onEnable() {
         if(Bukkit.getPluginManager().getPlugin("ParticleLIB") == null){
@@ -65,6 +75,8 @@ public class Main extends JavaPlugin {
 
         getCommand("endcrate").setExecutor(new EndcrateCommand(this));
         getServer().getPluginManager().registerEvents(new EndCrateClickEvent(this), this);
+        getServer().getPluginManager().registerEvents(new EndCratePreviewClickEvent(this), this);
+        getServer().getPluginManager().registerEvents(new EntityClickEvent(this), this);
         rc = new CrateConfig();
         rc.reload();
         rc.reloadLocations();
@@ -72,6 +84,9 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        for(Entity ent : armorStandList){
+            ent.remove();
+        }
     }
 
     public static String getColored(String s){return ChatColor.translateAlternateColorCodes('&', s);}

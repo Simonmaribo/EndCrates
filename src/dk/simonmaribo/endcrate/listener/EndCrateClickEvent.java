@@ -44,7 +44,6 @@ public class EndCrateClickEvent implements Listener {
                     event.setCancelled(true);
                     if (Main.endcrateYML.getBoolean("EndCrate.Preview")) {
                         player.openInventory(Main.rc.getPreview());
-
                     }
                 }
             }
@@ -91,6 +90,7 @@ public class EndCrateClickEvent implements Listener {
                     player.sendMessage(Main.getColored(Main.messagesYML.getString("no-key")));
                 }
             }
+        return;
         }
     }
 }
